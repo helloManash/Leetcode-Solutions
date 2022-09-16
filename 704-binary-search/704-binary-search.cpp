@@ -2,21 +2,22 @@ class Solution {
 public:
     int search(vector<int>& nums, int target) {
         if(nums.size() == 0) return -1;
-        if(nums.size() == 1){
-            if(nums[0] == target){
-                return 0;
+        int high = nums.size() -1;
+        int low = 0;
+        while(low <= high){
+            int mid = low + (high - low)/2;
+            if(nums[mid] == target){
+                return mid;
             }
+            else if(nums[mid] > target){
+                high = mid - 1;
+                
+            }
+            
             else{
-                return -1;
+                low = mid + 1;
             }
         }
-        auto idx = lower_bound(nums.begin(), nums.end(), target);
-        if(*idx == target){
-            return (idx - nums.begin());
-        }
-        else{
-            return -1;
-        }
-        
+        return -1;
     }
 };
