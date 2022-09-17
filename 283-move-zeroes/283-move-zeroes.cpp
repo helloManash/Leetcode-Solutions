@@ -1,22 +1,27 @@
 class Solution {
 public:
+    void swap(int * a, int * b){
+        int temp = *a;
+        *a = *b;
+        *b = temp;
+    }
     void moveZeroes(vector<int>& nums) {
-        vector<int>v(nums.size());
-        int count = 0, k = 0;
-        for(int i = 0;i < nums.size(); i++){
-            if(nums[i]){
-                v[k++] = nums[i];
+        int i = 0, k = 0;
+        if(nums.size() == 0 || nums.size() == 1) return;
+        while(k < (int)nums.size()){
+            if(nums[k] != 0){
+                if(nums[i] == 0){
+                    swap(&nums[k], &nums[i]);
+                    
+                }
+                i++;
             }
             else{
-                count++;
+                if(nums[i] != 0){
+                    i++;
+                }
             }
-        }
-        while(count){
-            v[k++] = 0;
-            count--;
-        }
-        for(int i = 0; i < nums.size(); i++){
-            nums[i] = v[i];
+            k++;
         }
     }
 };
