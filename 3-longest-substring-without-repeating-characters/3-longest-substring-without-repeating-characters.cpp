@@ -13,7 +13,7 @@ public:
                     j++;
                 }
                 j++;
-                cout<<j<<endl;
+                
                 continue;
             }
             
